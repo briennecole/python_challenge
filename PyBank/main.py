@@ -12,12 +12,20 @@ with open (budget_csv) as csv_file:
     #Split the data on commas
     csvreader = csv.reader(csv_file, delimiter=',')
 
-#     #Separate header
-#     header = next(csvreader)
+    #Separate header
+    header = next(csvreader)
 
         # Loop through the data
+    num_months = 0
     for row in csvreader:
-        print (row)
+
+        #Count the number of months
+        num_months = num_months + 1
+        print (num_months)
+
+        # Find sum of P & L
+        net_pandl = sum([int(row[1])])
+        #print (net_pandl)
 
 
 #def profit_loss(budget_data)
