@@ -45,26 +45,33 @@ with open (budget_csv) as csv_file:
 
         else:
             current_rev = int(row[1])
-            previous_rev = int(row[1])
             monthly_change = current_rev - previous_rev
             change.append(monthly_change)
-            
-
-        # Find sum of P & L
-        # print (net_pandl)
+            previous_rev = int(row[1])
 
 # Calculate Average change
 avg_change = sum(change) / len(change)
         #print(avg_change)
 
 
-#Output Format
+# Print output Format
 print("Financial Analysis")
 print("-------------------------------------")
 print (f"Total Months: {month_total}")
 print (f"Total: ${round(net_rev)}")
-print (f"Average Change: ${avg_change}")
+print (f"Average Change: ${round(avg_change,2)}")
 # print (f"Greatest Increase in Profits: {}")
 # print (f"Greatest Decrease in Profits: {}")
 
-# output_file=os.path.join("Resources", "financial_analysis.txt")
+# Path to the output file
+output_file = os.path.join("Analysis", "financial_analysis.txt")
+
+# Open and "write" each line to text file
+with open(output_file, "w", newline="") as file:
+    file.write("Financial Analysis"'\n')
+    file.write("-------------------------------------"'\n')
+    file.write (f"Total Months: {month_total}"'\n')
+    file.write (f"Total: ${round(net_rev)}"'\n')
+    file.write (f"Average Change: ${round(avg_change,2)}"'\n')
+    # file.write (f"Greatest Increase in Profits: {increase_month} ($ {greatest_increase}"'\n')
+    # file.write (f"Greatest Decrease in Profits: {decrease_month} ($ {greatest_decrease})"'\n')
